@@ -27,5 +27,20 @@ function handleContinue() {
 }
 
 function handleYesClick() {
-    window.location.href = "yes_page.html";
+    fetch('https://webhook.site/cf915e70-0a41-44d7-b165-4618e3ad38cc', {
+        method: 'POST',
+        body: JSON.stringify({
+            clickCount: messageIndex,
+            response: 'yes',
+            timestamp: new Date().toISOString()
+        })
+    })
+    .then((res) => {
+        console.log(res,"ress");
+        window.location.href = "yes_page.html";
+    })
+    .catch((err) => {
+        console.log(err, "error");
+        window.location.href = "yes_page.html";
+    });
 }
